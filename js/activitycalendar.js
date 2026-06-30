@@ -20,8 +20,19 @@ async function fetchActivityCalendarImages() {
     activityCalendarImages = data;
     renderActivityCalendarImages();
   } catch (error) {
+    console.error("Activity calendar fetch error:", error);
     alert("Server error while fetching images");
   }
+}
+
+function getImageUrl(imagePath) {
+  if (!imagePath) return "";
+
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+
+  return `${BASE_URL}${imagePath}`;
 }
 
 function renderActivityCalendarImages() {
@@ -31,7 +42,7 @@ function renderActivityCalendarImages() {
     const card = document.createElement("div");
     card.className = "activity-calendar-card";
 
-    const imageUrl = `${BASE_URL}${item.image}`;
+    const imageUrl = getImageUrl(item.image);
 
     card.innerHTML = `
       <img src="${imageUrl}" alt="Activity Calendar Image">
@@ -118,8 +129,12 @@ function showActivityCalendarPreviewCard(imageSrc) {
     openActivityCalendarImageModal(imageSrc);
   });
 
-  activityCalendarGrid.insertBefore(previewCard, uploadCard);
-  uploadCard.remove();
+  if (uploadCard) {
+    activityCalendarGrid.insertBefore(previewCard, uploadCard);
+    uploadCard.remove();
+  } else {
+    activityCalendarGrid.appendChild(previewCard);
+  }
 }
 
 async function saveActivityCalendarImage() {
@@ -148,6 +163,7 @@ async function saveActivityCalendarImage() {
     const data = await res.json();
 
     if (!res.ok) {
+      console.error("Activity calendar upload failed:", data);
       alert(data.message || "Image save nahi hui");
       return;
     }
@@ -155,6 +171,7 @@ async function saveActivityCalendarImage() {
     selectedActivityCalendarFile = null;
     fetchActivityCalendarImages();
   } catch (error) {
+    console.error("Activity calendar save error:", error);
     alert("Server error while saving image");
   }
 }
@@ -189,6 +206,7 @@ async function deleteActivityCalendarImage(id) {
 
     fetchActivityCalendarImages();
   } catch (error) {
+    console.error("Activity calendar delete error:", error);
     alert("Server error while deleting image");
   }
 }
