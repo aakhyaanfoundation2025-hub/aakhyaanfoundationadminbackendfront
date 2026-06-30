@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+}
+
+/* Admin Gate Page */
+.admin-gate-section,
+.admin-main-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f4f6f8;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.admin-gate-section *,
+.admin-main-page * {
+  box-sizing: border-box;
+}
+
+.admin-gate-box,
+.admin-main-box {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 35px 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+}
+
+.admin-gate-box h1,
+.admin-main-box h1 {
+  font-size: 32px;
+  color:#1187c9;
+  margin: 0 0 10px;
+}
+
+.admin-gate-box p,
+.admin-main-box p {
+  color: #666;
+  margin: 0 0 25px;
+}
+
+.admin-gate-btn-group {
+  display: flex;
+  gap: 15px;
+}
+
+.admin-gate-btn {
+  width: 100%;
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  background:#1187c9;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.admin-gate-btn:hover {
+  background: #32b2fc;
+}
+
+.admin-main-page {
+  display: none;
+}
+
+/* Login Signup Popup Fix */
+.auth-modal-overlay,
+.signup-modal-overlay,
+.auth-modal-overlay *,
+.signup-modal-overlay * {
+  box-sizing: border-box;
+}
+
+.auth-popup-box,
+.signup-popup-box {
+  overflow: hidden;
+}
+
+.input-box input,
+.signup-input-box input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eye-btn,
+.signup-eye-btn {
+  width: auto;
+  padding: 0;
+}
+
+.auth-switch-text button,
+.signup-switch-text button {
+  width: auto;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .admin-gate-box,
+  .admin-main-box {
+    padding: 28px 18px;
+  }
+
+  .admin-gate-box h1,
+  .admin-main-box h1 {
+    font-size: 26px;
+  }
+
+  .admin-gate-btn-group {
+    flex-direction: column;
+  }
+}

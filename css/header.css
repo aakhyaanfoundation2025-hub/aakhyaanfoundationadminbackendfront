@@ -1,0 +1,625 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+overflow-x:hidden;
+}
+
+/* TOP HEADER */
+
+.top-header{
+background:#008ad0;
+padding:10px 0;
+}
+
+.container{
+width:95%;
+max-width:1400px;
+margin:auto;
+}
+
+.top-header .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.top-left{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.top-left a{
+color:#fff;
+text-decoration:none;
+font-size:13px;
+transition:.3s;
+}
+
+.top-left a:hover{
+color:#000;
+}
+
+.top-right{
+display:flex;
+gap:10px;
+}
+
+.top-right a{
+width:35px;
+height:35px;
+border-radius:50%;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#008ad0;
+text-decoration:none;
+transition:.3s;
+}
+
+.top-right a:hover{
+background:#000;
+color:#fff;
+transform:scale(1.1);
+}
+
+.auth-buttons{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-left:20px;
+}
+
+.auth-buttons a{
+    min-width:100px;
+    height:38px;
+    padding:0 20px;
+    border-radius:5px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    white-space:nowrap;
+}
+
+.login-btn{
+    background:#fff;
+    color:#008ad0;
+    border:1px solid #fff;
+}
+
+.login-btn:hover{
+    background:#000;
+    color:#fff;
+}
+
+.signup-btn{
+    background:#fff;
+    color:#008ad0;
+    border:1px solid #fff;
+}
+
+.signup-btn:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar-area{
+background:#fff;
+padding:15px 0;
+width:100%;
+z-index:999;
+}
+
+.navbar-area.sticky{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+box-shadow:0 3px 15px rgba(0,0,0,.1);
+animation:slideDown .4s;
+}
+
+@keyframes slideDown{
+from{transform:translateY(-100%);}
+to{transform:translateY(0);}
+}
+
+.nav-container{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo img{
+height:70px;
+}
+
+/* MENU */
+
+.nav-menu > ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.nav-menu ul li{
+position:relative;
+list-style:none;
+}
+
+.nav-menu ul li a{
+text-decoration:none;
+color:#000;
+font-size:15px;
+font-weight:700;
+transition:.3s;
+}
+
+.nav-menu ul li a:hover{
+color:#008ad0;
+}
+
+/* MAIN DROPDOWN */
+
+.submenu{
+position:absolute;
+top:100%;
+left:0;
+width:280px;
+background:#fff;
+display:none;
+padding:0;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+border-top:4px solid #008ad0;
+z-index:9999;
+}
+
+.dropdown:hover > .submenu{
+display:block;
+}
+
+.submenu li{
+display:block;
+width:100%;
+border-bottom:1px solid #eee;
+}
+
+.submenu li a{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 20px;
+width:100%;
+color:#000;
+}
+
+.submenu li a:hover{
+color:#008ad0;
+}
+
+/* SECOND LEVEL */
+
+.submenu-2{
+position:absolute;
+left:100%;
+top:0;
+width:280px;
+background:#fff;
+display:none;
+padding:0;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+border-top:4px solid #008ad0;
+z-index:99999;
+}
+
+.has-sub:hover > .submenu-2{
+display:block;
+}
+
+.submenu-2 li{
+display:block;
+width:100%;
+border-bottom:1px solid #eee;
+}
+
+.submenu-2 li a{
+display:block;
+padding:16px 20px;
+color:#000;
+}
+
+.submenu-2 li a:hover{
+color:#008ad0;
+}
+
+/* HELP BUTTON */
+
+.help-btn a{
+background:#008ad0;
+color:#fff;
+padding:15px 35px;
+border-radius:5px;
+text-decoration:none;
+font-weight:700;
+border:2px solid #008ad0;
+display:inline-block;
+transition:.3s;
+}
+
+.help-btn a:hover{
+background:#fff;
+color:#008ad0;
+box-shadow:0 0 15px rgba(0,138,208,.45);
+}
+
+/* MOBILE BUTTON */
+
+.mobile-btn{
+display:none;
+font-size:28px;
+cursor:pointer;
+color:#008ad0;
+}
+
+/* MOBILE MENU */
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu{
+    position:fixed;
+    top:0;
+    left:-320px;
+    width:300px;
+    height:100vh;
+    background:#fff;
+    z-index:99999;
+    transition:.35s ease;
+    overflow-y:auto;
+    box-shadow:0 0 20px rgba(0,0,0,.15);
+}
+
+.mobile-menu.active{
+    left:0;
+}
+
+.close-btn{
+    text-align:right;
+    padding:18px 20px;
+    font-size:24px;
+    cursor:pointer;
+    border-bottom:1px solid #eee;
+}
+
+.mobile-menu ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.mobile-menu li{
+    border-bottom:1px solid #ececec;
+}
+
+.mobile-menu li a{
+    text-decoration:none;
+    color:#333;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* Main Row */
+
+.mobile-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 18px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.mobile-link a{
+    flex:1;
+    color:#333;
+}
+
+.mobile-link:hover{
+    background:#f7f7f7;
+}
+
+.mobile-toggle{
+    width:24px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    color:#666;
+}
+
+/* Submenu */
+
+.mobile-submenu{
+    display:none;
+    background:#fafafa;
+}
+
+.mobile-submenu.active{
+    display:block;
+}
+
+.mobile-submenu li{
+    border-bottom:none;
+}
+
+.mobile-submenu li a{
+    display:block;
+    padding:12px 20px 12px 35px;
+    font-size:12px;
+    color:#555;
+    text-transform:uppercase;
+}
+
+.mobile-submenu li a:hover{
+    color:#008ad0;
+}
+
+/* Level 2 */
+
+.mobile-submenu .mobile-submenu{
+    background:#f3f3f3;
+}
+
+.mobile-submenu .mobile-submenu li a{
+    padding-left:55px;
+    font-size:11px;
+}
+
+/* Normal Links */
+
+.mobile-menu > ul > li > a{
+    display:block;
+    padding:14px 18px;
+    font-size:13px;
+    font-weight:600;
+    color:#333;
+}
+
+/* MOBILE DONATE BUTTON */
+
+.mobile-donate{
+    padding:20px !important;
+    border:none !important;
+    text-align:center;
+}
+
+.mobile-donate a{
+    display:inline-block;
+    width:160px; 
+    background:#008ad0;
+    color:#fff !important;
+    text-align:center;
+    padding:15px;
+    border-radius:5px;
+    font-size:15px;
+    font-weight:700;
+    text-decoration:none;
+    border:2px solid #008ad0;
+    transition:.3s;
+}
+
+.mobile-donate a:hover{
+    background:#fff;
+    color:#008ad0 !important;
+    box-shadow:0 0 15px rgba(0,138,208,.45);
+}
+
+
+/* Overlay */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9999;
+}
+
+.overlay.active{
+    opacity:1;
+    visibility:visible;
+}
+
+/* =========================
+   MOBILE CONTACT INFO
+========================= */
+
+.mobile-contact-info{
+    padding:20px;
+}
+
+.contact-item{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:18px;
+    color:#555;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.contact-item i{
+    color:#008ad0;
+    font-size:15px;
+    margin-top:3px;
+    min-width:18px;
+}
+
+.mobile-help a{
+    display:block;
+    text-align:center;
+    padding:12px;
+    border-radius:5px;
+    font-weight:600;
+    background:#008ad0;
+    color:#fff !important;
+    text-decoration:none;
+}
+
+/* Social Icons */
+
+.mobile-social{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
+}
+
+.mobile-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#008ad0;
+    color:#fff !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.mobile-social a:hover{
+    transform:translateY(-3px);
+}
+
+/* Individual Colors */
+
+.mobile-social a:nth-child(1){
+    background:#1877f2;
+}
+
+.mobile-social a:nth-child(2){
+    background:#e4405f;
+}
+
+.mobile-social a:nth-child(3){
+    background:#0a66c2;
+}
+
+.mobile-social a:nth-child(4){
+    background:#1da1f2;
+}
+
+.mobile-auth{
+    margin-top:20px;
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+}
+
+.mobile-auth a{
+    text-decoration:none;
+    text-align:center;
+    padding:12px;
+    border-radius:5px;
+    font-weight:600;
+    display:block;
+}
+
+.mobile-login{
+    background:#f2f2f2;
+    color:#333;
+}
+
+.mobile-signup{
+    background:#008ad0;
+    color:#fff;
+}
+
+.mobile-signup:hover{
+    background:#006fa8;
+}
+
+
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+.top-header{
+display:none;
+}
+
+.nav-menu{
+display:none;
+}
+
+.help-btn{
+display:none;
+}
+
+.mobile-btn{
+display:block;
+}
+
+.logo img{
+height:55px;
+}
+}
+/* Tablet */
+
+@media (max-width:768px){
+
+    .navbar-area{
+        padding:10px 0;
+    }
+
+    .logo img{
+        height:50px;
+    }
+
+    .mobile-menu{
+        width:280px;
+    }
+
+}
+
+/* Small Mobile */
+
+@media (max-width:480px){
+
+    .mobile-menu{
+        width:85%;
+        left:-100%;
+    }
+
+    .mobile-menu.active{
+        left:0;
+    }
+
+    .logo img{
+        height:45px;
+    }
+
+    .mobile-btn{
+        font-size:26px;
+    }
+
+}
+
+
+
+

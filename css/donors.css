@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+}
+
+.donor-admin-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 50px;
+}
+
+.donor-header {
+  max-width: 850px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.donor-header h1 {
+  font-size: 42px;
+  color: #1187c9;
+  margin-bottom: 12px;
+}
+
+.donor-header p {
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.donor-search {
+  width: 100%;
+  max-width: 420px;
+  height: 52px;
+  border: 1.5px solid #1187c9;
+  border-radius: 8px;
+  padding: 0 18px;
+  font-size: 17px;
+  outline: none;
+  background: #fff;
+}
+
+.donor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.donor-card,
+.donor-form-card {
+  min-height: 390px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+  padding: 18px;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.donor-card:hover,
+.donor-form-card:hover {
+  transform: translateY(-5px);
+}
+
+.donor-photo-box {
+  width: 100%;
+  height: 190px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eff6ff;
+  border: 2px dashed #bfdbfe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.donor-photo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.donor-upload-content {
+  text-align: center;
+  color: #1187c9;
+}
+
+.donor-upload-content i {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.donor-upload-content h3 {
+  font-size: 19px;
+}
+
+.donor-input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+  margin-top: 14px;
+}
+
+.donor-input:focus {
+  border-color: #1187c9;
+}
+
+.donor-save-btn {
+  width: 100%;
+  height: 45px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 50px;
+  background: #1187c9;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: none;
+}
+
+.donor-save-btn.show {
+  display: block;
+}
+
+.donor-delete-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.donor-info {
+  margin-top: 16px;
+  background: #1187c9;
+  border-radius: 16px;
+  color: #fff;
+  padding: 18px;
+}
+
+.donor-info h3 {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.donor-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.donor-row span:last-child {
+  text-align: right;
+  word-break: break-word;
+}
+
+@media (max-width: 1200px) {
+  .donor-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .donor-admin-section {
+    padding: 55px 25px;
+  }
+
+  .donor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .donor-header h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .donor-admin-section {
+    padding: 45px 18px;
+  }
+
+  .donor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-header h1 {
+    font-size: 32px;
+  }
+
+  .donor-header p {
+    font-size: 15px;
+  }
+
+  .donor-photo-box {
+    height: 210px;
+  }
+}

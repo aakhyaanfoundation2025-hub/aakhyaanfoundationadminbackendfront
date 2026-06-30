@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #111827;
+}
+
+.activity-calendar-admin-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 70px 50px;
+}
+
+.activity-calendar-header {
+  max-width: 850px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.activity-calendar-header h1 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #1187c9;
+  text-align: center;
+}
+
+.activity-calendar-header p {
+  max-width: 700px;
+  font-size: 17px;
+  color: #6b7280;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.activity-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+/* upload card */
+.activity-calendar-upload-card {
+  height: 270px;
+  background: #fff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.07);
+}
+
+.activity-calendar-upload-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-5px);
+}
+
+.activity-calendar-upload-content {
+  text-align: center;
+}
+
+.activity-calendar-upload-icon {
+  width: 85px;
+  height: 85px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+  font-size: 35px;
+}
+
+.activity-calendar-upload-content h3 {
+  font-size: 23px;
+  color: #020617;
+  margin-bottom: 8px;
+}
+
+.activity-calendar-upload-content p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* image card */
+.activity-calendar-card {
+  height: 270px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+}
+
+.activity-calendar-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.activity-calendar-card:hover img {
+  transform: scale(1.06);
+}
+
+.activity-calendar-delete-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.3s ease;
+}
+
+.activity-calendar-delete-btn:hover {
+  background: #dc2626;
+  transform: scale(1.08);
+}
+
+.activity-calendar-save-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  border: none;
+  background: #1187c9;
+  color: #fff;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.activity-calendar-save-btn:hover {
+  background: #1187c9;
+}
+
+/* modal */
+.activity-calendar-image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.88);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+  z-index: 9999;
+}
+
+.activity-calendar-image-modal.active {
+  display: flex;
+}
+
+.activity-calendar-image-modal img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.activity-calendar-modal-close {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #111827;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* responsive */
+@media (max-width: 1200px) {
+  .activity-calendar-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .activity-calendar-admin-section {
+    padding: 55px 25px;
+  }
+
+  .activity-calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .activity-calendar-header h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 576px) {
+  .activity-calendar-admin-section {
+    padding: 45px 18px;
+  }
+
+  .activity-calendar-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .activity-calendar-header h1 {
+    font-size: 32px;
+  }
+
+  .activity-calendar-header p {
+    font-size: 16px;
+  }
+
+  .activity-calendar-upload-card,
+  .activity-calendar-card {
+    height: 250px;
+  }
+
+  .activity-calendar-image-modal {
+    padding: 20px;
+  }
+}

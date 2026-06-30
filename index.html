@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Access Page</title>
+   <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./favicon.png">
+
+  <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/login.css">
+      <link rel="stylesheet" href="./css/signup.css">
+  <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+</head>
+<body>
+
+ <section class="admin-gate-section" id="authSection">
+  <div class="admin-gate-box">
+    <h1>Admin Access</h1>
+    <p>Please login or signup to view main page</p>
+
+    <div class="admin-gate-btn-group">
+      <button class="admin-gate-btn" id="signupBtn">Signup</button>
+      <button class="admin-gate-btn" id="loginBtn">Login Now</button>
+    </div>
+  </div>
+</section>
+
+<section class="admin-main-page" id="mainPage">
+  <div class="admin-main-box">
+    <h1>Welcome Admin</h1>
+    <p>Now you can access the main page.</p>
+    <button class="admin-gate-btn" onclick="logout()">Logout</button>
+  </div>
+</section>
+
+  <!-- order important hai -->
+ <script src="./config.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/signup.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>

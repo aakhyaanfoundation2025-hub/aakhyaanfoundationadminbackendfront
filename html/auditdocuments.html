@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Audit Documents</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/signup.css">
+  <link rel="stylesheet" href="../css/documents.css" />
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <section class="document-admin-section">
+    <div class="document-header">
+      <h1>Audit Documents</h1>
+      <p>
+        Upload, save, view, download and manage important audit PDF documents.
+      </p>
+    </div>
+
+    <div class="document-grid" id="auditDocumentGrid"></div>
+  </section>
+
+  <input type="file" id="auditDocumentFileInput" accept="application/pdf" hidden />
+
+  <div class="document-pdf-modal" id="auditDocumentPdfModal">
+    <button class="document-modal-close" id="auditDocumentModalClose">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="document-pdf-box">
+      <div class="document-pdf-actions">
+        <button id="auditPdfScrollUp">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <button id="auditPdfScrollDown">
+          <i class="fa-solid fa-arrow-down"></i>
+        </button>
+      </div>
+
+      <iframe id="auditDocumentPdfFrame" src=""></iframe>
+    </div>
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="../js/header.js"></script>
+  <script src="../js/auditdocuments.js"></script>
+</body>
+</html>

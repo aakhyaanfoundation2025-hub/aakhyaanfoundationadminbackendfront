@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Press Coverage</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../css/activitycalendar.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://unpkg.com/lucide-static@latest/font/lucide.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <script>
+      if (!localStorage.getItem("token")) {
+        window.location.href = "../index.html";
+      }
+    </script>
+
+    <div id="header"></div>
+
+    <section class="activity-calendar-admin-section">
+      <div class="activity-calendar-header">
+        <h1>Press Coverage</h1>
+        <p>
+          The admin can upload, save, and delete press coverage images from here.
+        </p>
+      </div>
+
+      <div class="activity-calendar-grid" id="pressCoverageGrid"></div>
+    </section>
+
+    <input type="file" id="pressCoverageFileInput" accept="image/*" hidden />
+
+    <div class="activity-calendar-image-modal" id="pressCoverageImageModal">
+      <button class="activity-calendar-modal-close" id="pressCoverageModalClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <img id="pressCoverageModalImage" src="" alt="Press Coverage Image" />
+    </div>
+
+    <div id="footer"></div>
+    <div id="floating-icons"></div>
+
+    <script src="../config.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/signup.js"></script>
+    <script src="../js/presscoverage.js"></script>
+  </body>
+</html>
