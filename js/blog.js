@@ -20,8 +20,19 @@ async function fetchBlogImages() {
     blogImages = data;
     renderBlogImages();
   } catch (error) {
+    console.error("Blog fetch error:", error);
     alert("Server error while fetching blog images");
   }
+}
+
+function getImageUrl(imagePath) {
+  if (!imagePath) return "";
+
+  if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+    return imagePath;
+  }
+
+  return `${BASE_URL}${imagePath}`;
 }
 
 function renderBlogImages() {
@@ -31,7 +42,7 @@ function renderBlogImages() {
     const card = document.createElement("div");
     card.className = "activity-calendar-card";
 
-    const imageUrl = `${BASE_URL}${item.image}`;
+    const imageUrl = getImageUrl(item.image);
 
     card.innerHTML = `
       <img src="${imageUrl}" alt="Blog Image">
@@ -118,8 +129,12 @@ function showBlogPreviewCard(imageSrc) {
     openBlogImageModal(imageSrc);
   });
 
-  blogGrid.insertBefore(previewCard, uploadCard);
-  uploadCard.remove();
+  if (uploadCard) {
+    blogGrid.insertBefore(previewCard, uploadCard);
+    uploadCard.remove();
+  } else {
+    blogGrid.appendChild(previewCard);
+  }
 }
 
 async function saveBlogImage() {
@@ -148,6 +163,7 @@ async function saveBlogImage() {
     const data = await res.json();
 
     if (!res.ok) {
+      console.error("Blog upload failed:", data);
       alert(data.message || "Blog image save nahi hui");
       return;
     }
@@ -155,6 +171,7 @@ async function saveBlogImage() {
     selectedBlogFile = null;
     fetchBlogImages();
   } catch (error) {
+    console.error("Blog save error:", error);
     alert("Server error while saving blog image");
   }
 }
@@ -189,6 +206,7 @@ async function deleteBlogImage(id) {
 
     fetchBlogImages();
   } catch (error) {
+    console.error("Blog delete error:", error);
     alert("Server error while deleting blog image");
   }
 }
