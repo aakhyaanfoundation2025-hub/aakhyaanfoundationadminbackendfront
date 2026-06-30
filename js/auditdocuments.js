@@ -20,6 +20,10 @@ function getAuditPdfUrl(filePath) {
   return `${BASE_URL}${filePath}`;
 }
 
+function getAuditPdfViewerUrl(pdfUrl) {
+  return `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfUrl)}`;
+}
+
 async function fetchAuditDocuments() {
   try {
     const res = await fetch(API_PATHS.AUDIT_DOCUMENTS);
@@ -234,9 +238,7 @@ async function deleteAuditDocumentPdf(id) {
 }
 
 function openAuditDocumentPdfModal(pdfSrc) {
-  auditDocumentPdfFrame.src =
-    `https://docs.google.com/gview?embedded=true&url=${encodeURIComponent(pdfSrc)}`;
-
+  auditDocumentPdfFrame.src = getAuditPdfViewerUrl(pdfSrc);
   auditDocumentPdfModal.classList.add("active");
 }
 
