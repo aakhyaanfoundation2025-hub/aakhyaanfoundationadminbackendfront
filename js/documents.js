@@ -12,6 +12,16 @@ function getToken() {
   return localStorage.getItem("token");
 }
 
+function getPdfUrl(filePath) {
+  if (!filePath) return "";
+
+  if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
+    return filePath;
+  }
+
+  return `${BASE_URL}${filePath}`;
+}
+
 async function fetchDocuments() {
   try {
     const res = await fetch(API_PATHS.DOCUMENTS);
@@ -36,6 +46,8 @@ function renderDocumentPdfFiles(documents) {
     const card = document.createElement("div");
     card.className = "document-card";
 
+    const pdfUrl = getPdfUrl(pdf.file);
+
     card.innerHTML = `
       <div class="document-card-content">
         <div class="document-pdf-icon">
@@ -49,7 +61,7 @@ function renderDocumentPdfFiles(documents) {
             <i class="fa-solid fa-eye"></i>
           </button>
 
-          <a class="document-download-btn" href="${pdf.file}" download title="Download PDF">
+          <a class="document-download-btn" href="${pdfUrl}" download title="Download PDF" target="_blank">
             <i class="fa-solid fa-download"></i>
           </a>
 
@@ -67,11 +79,11 @@ function renderDocumentPdfFiles(documents) {
     `;
 
     card.querySelector(".document-pdf-icon").addEventListener("click", () => {
-      openDocumentPdfModal(pdf.file);
+      openDocumentPdfModal(pdfUrl);
     });
 
     card.querySelector(".document-view-btn").addEventListener("click", () => {
-      openDocumentPdfModal(pdf.file);
+      openDocumentPdfModal(pdfUrl);
     });
 
     if (isDocumentAdmin) {
@@ -177,6 +189,7 @@ async function saveDocumentPdf(file) {
     const data = await res.json();
 
     if (!res.ok) {
+      console.error("Document upload failed:", data);
       alert(data.message || "Document upload failed");
       return;
     }
