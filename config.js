@@ -2,7 +2,7 @@ const BASE_URL =
   window.location.hostname === "127.0.0.1" ||
   window.location.hostname === "localhost"
     ? "http://localhost:5000"
-    : "https://akhyanfoundationback.onrender.com";
+    : "https://aakhyaanfoundationadminbackend.onrender.com";
 
 const API_PATHS = {
   REGISTER: `${BASE_URL}/api/admin/register`,
