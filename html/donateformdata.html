@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Donate Form Data</title>
+
+  <link rel="stylesheet" href="../css/donateformdata.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <section class="donate-data-section">
+    <div class="donate-data-header">
+      <h1>Donate Form Data</h1>
+      <p>View all donation form submissions received from the public website.</p>
+    </div>
+
+    <div class="donate-count-box">
+      Total Donation Forms: <span id="totalDonations">0</span>
+    </div>
+
+    <div class="donate-list" id="donateList">
+      <p class="loading-text">Loading donation data...</p>
+    </div>
+  </section>
+
+  <div class="donate-modal" id="donateModal">
+    <div class="donate-modal-box">
+      <button class="modal-close" id="modalClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Donor Full Details</h2>
+
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/donateformdata.js"></script>
+</body>
+</html>
