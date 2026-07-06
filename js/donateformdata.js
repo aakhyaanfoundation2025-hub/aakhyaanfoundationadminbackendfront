@@ -47,16 +47,14 @@ function renderDonationRows(donations) {
           ₹ ${donation.donationAmount || 0}
         </div>
 
-        <div class="action-buttons">
-          <button class="view-more-btn" onclick="openDonorDetails('${donation._id}')">
-            View More Data
-            <i class="fa-solid fa-eye"></i>
-          </button>
+        <button class="view-more-btn" onclick="openDonorDetails('${donation._id}')">
+          View More Data
+          <i class="fa-solid fa-eye"></i>
+        </button>
 
-          <button class="delete-btn" onclick="deleteDonation('${donation._id}')">
-            <i class="fa-solid fa-trash"></i>
-          </button>
-        </div>
+        <button class="delete-btn" onclick="deleteDonation('${donation._id}')">
+          <i class="fa-solid fa-trash"></i>
+        </button>
       </div>
     `;
   }).join("");
