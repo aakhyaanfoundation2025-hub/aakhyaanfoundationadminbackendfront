@@ -53,10 +53,10 @@ function renderDonationRows(donations) {
             <i class="fa-solid fa-eye"></i>
           </button>
 
-        </div>
-         <button class="delete-btn" onclick="deleteDonation('${donation._id}')">
+          <button class="delete-btn" onclick="deleteDonation('${donation._id}')">
             <i class="fa-solid fa-trash"></i>
           </button>
+        </div>
       </div>
     `;
   }).join("");
