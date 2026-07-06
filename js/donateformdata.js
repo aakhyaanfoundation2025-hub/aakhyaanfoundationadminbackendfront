@@ -20,11 +20,9 @@ async function fetchDonationData() {
     }
 
     allDonations = data.donations || data || [];
-
     totalDonations.innerText = allDonations.length;
 
     renderDonationRows(allDonations);
-
   } catch (error) {
     console.log("FETCH DONATION DATA ERROR:", error);
     donateList.innerHTML = `<p class="empty-text">Server error. Donation data not loaded.</p>`;
@@ -33,13 +31,14 @@ async function fetchDonationData() {
 
 function renderDonationRows(donations) {
   if (!donations.length) {
+    totalDonations.innerText = 0;
     donateList.innerHTML = `<p class="empty-text">No donation form data found.</p>`;
     return;
   }
 
   donateList.innerHTML = donations.map((donation, index) => {
     return `
-      <div class="donate-row">
+      <div class="donate-row" id="donationRow-${donation._id}">
         <div class="donor-name">
           ${index + 1}. ${donation.fullName || "No Name"}
         </div>
@@ -48,10 +47,16 @@ function renderDonationRows(donations) {
           ₹ ${donation.donationAmount || 0}
         </div>
 
-        <button class="view-more-btn" onclick="openDonorDetails('${donation._id}')">
-          View More Data
-          <i class="fa-solid fa-eye"></i>
-        </button>
+        <div class="action-buttons">
+          <button class="view-more-btn" onclick="openDonorDetails('${donation._id}')">
+            View More Data
+            <i class="fa-solid fa-eye"></i>
+          </button>
+
+          <button class="delete-btn" onclick="deleteDonation('${donation._id}')">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
       </div>
     `;
   }).join("");
@@ -59,12 +64,10 @@ function renderDonationRows(donations) {
 
 function openDonorDetails(id) {
   const donation = allDonations.find(item => item._id === id);
-
   if (!donation) return;
 
   modalContent.innerHTML = `
     <div class="detail-grid">
-
       <div class="detail-item">
         <span>Full Name</span>
         <strong>${donation.fullName || "N/A"}</strong>
@@ -109,14 +112,12 @@ function openDonorDetails(id) {
         <span>Submitted Date</span>
         <strong>${formatDate(donation.createdAt)}</strong>
       </div>
-
     </div>
 
     <div class="image-section">
       <h3>Uploaded Images</h3>
 
       <div class="donor-images">
-
         <div class="image-box">
           <p>Photo</p>
           ${getImageHtml(donation.photo?.url)}
@@ -131,12 +132,39 @@ function openDonorDetails(id) {
           <p>Document Back</p>
           ${getImageHtml(donation.documentBack?.url)}
         </div>
-
       </div>
     </div>
   `;
 
   donateModal.classList.add("active");
+}
+
+async function deleteDonation(id) {
+  const confirmDelete = confirm("Are you sure you want to delete this donation form data?");
+
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`${API_PATHS.DONATE}/${id}`, {
+      method: "DELETE",
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message || "Failed to delete donation data");
+      return;
+    }
+
+    allDonations = allDonations.filter(item => item._id !== id);
+    totalDonations.innerText = allDonations.length;
+    renderDonationRows(allDonations);
+
+    alert("Donation data deleted successfully!");
+  } catch (error) {
+    console.log("DELETE DONATION ERROR:", error);
+    alert("Server error. Donation data not deleted.");
+  }
 }
 
 function getImageHtml(url) {
