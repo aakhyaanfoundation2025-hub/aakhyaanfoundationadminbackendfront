@@ -10,6 +10,10 @@ function getToken() {
   return localStorage.getItem("token");
 }
 
+function removePdfExtension(fileName) {
+  return fileName.replace(/\.pdf$/i, "");
+}
+
 function getAuditPdfUrl(filePath) {
   if (!filePath) return "";
 
@@ -56,7 +60,7 @@ function renderAuditDocumentFiles(documents) {
           <i class="fa-solid fa-file-pdf"></i>
         </div>
 
-        <h3 class="document-name">${pdf.name}</h3>
+        <h3 class="document-name">${removePdfExtension(pdf.name)}</h3>
 
         <div class="document-actions">
           <button class="document-action-btn document-view-btn" title="View PDF">
@@ -149,7 +153,7 @@ function showAuditDocumentPreviewCard(file) {
         <i class="fa-solid fa-file-pdf"></i>
       </div>
 
-      <h3 class="document-name">${file.name}</h3>
+      <h3 class="document-name">${removePdfExtension(file.name)}</h3>
 
       <button class="document-save-btn">Save</button>
     </div>
