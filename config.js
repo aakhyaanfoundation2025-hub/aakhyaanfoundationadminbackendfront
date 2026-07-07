@@ -20,4 +20,5 @@ const API_PATHS = {
   POLICY_DOCUMENTS: `${BASE_URL}/api/policy-documents`,
   DONORS: `${BASE_URL}/api/donors`,
   DONATE: `${BASE_URL}/api/donate`,
+  MEMBERS: `${BASE_URL}/api/members`
 };

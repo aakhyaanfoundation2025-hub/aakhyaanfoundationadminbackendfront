@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Member Data</title>
+
+  <link rel="stylesheet" href="../css/memberdata.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <section class="member-data-section">
+    <div class="member-data-header">
+      <h1>Member Data</h1>
+      <p>View all membership form submissions received from the public website.</p>
+    </div>
+
+    <div class="member-count-box">
+      Total Members: <span id="totalMembers">0</span>
+    </div>
+
+    <div class="member-list" id="memberList">
+      <p class="loading-text">Loading member data...</p>
+    </div>
+  </section>
+
+  <div class="member-modal" id="memberModal">
+    <div class="member-modal-box">
+      <button class="modal-close" id="modalClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h2>Member Full Details</h2>
+
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="../js/memberdata.js"></script>
+</body>
+</html>
