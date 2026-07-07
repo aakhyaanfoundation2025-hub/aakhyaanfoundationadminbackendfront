@@ -21,9 +21,10 @@ body {
 }
 
 .dashboard-header h1 {
-  font-size: 36px;
+  font-size: 38px;
   color: #008ad0;
   margin-bottom: 8px;
+  font-weight: 800;
 }
 
 .dashboard-header p {
@@ -36,63 +37,79 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .dashboard-card {
   background: #fff;
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  min-height: 190px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
   border-left: 6px solid #008ad0;
-  transition: 0.35s;
+  position: relative;
+  overflow: hidden;
+  transition: 0.35s ease;
+}
+
+.dashboard-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: rgba(0, 138, 208, 0.08);
+  right: -55px;
+  top: -55px;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-7px);
+  box-shadow: 0 22px 45px rgba(0, 138, 208, 0.18);
 }
 
-.card-icon {
+.dashboard-icon {
   width: 65px;
   height: 65px;
-  border-radius: 16px;
-  background: #008ad0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #008ad0, #00b7ff);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 26px;
   margin-bottom: 18px;
+  box-shadow: 0 10px 25px rgba(0, 138, 208, 0.35);
 }
 
 .dashboard-card h3 {
-  font-size: 20px;
-  color: #333;
-  margin-bottom: 12px;
+  font-size: 19px;
+  color: #444;
+  margin-bottom: 10px;
 }
 
 .dashboard-card h2 {
-  font-size: 42px;
+  font-size: 46px;
   color: #008ad0;
+  font-weight: 900;
 }
 
 .dashboard-graph-box {
   background: #fff;
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  margin-bottom: 28px;
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
 }
 
 .graph-header {
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 }
 
 .graph-header h2 {
-  font-size: 26px;
+  font-size: 28px;
   color: #111;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
 .graph-header p {
@@ -100,103 +117,185 @@ body {
   font-size: 15px;
 }
 
-.graph-area {
+.chart-wrapper {
+  width: 100%;
+  height: 330px;
+  display: flex;
+  gap: 18px;
+}
+
+.chart-y-axis {
+  width: 45px;
+  height: 260px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.graph-item {
-  width: 100%;
-}
-
-.graph-info {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 16px;
+  color: #666;
+  font-size: 13px;
   font-weight: 700;
+  padding-top: 5px;
 }
 
-.graph-info strong {
-  color: #008ad0;
+.chart-area {
+  flex: 1;
+  height: 300px;
+  position: relative;
+  border-left: 2px solid #d8e2ea;
+  border-bottom: 2px solid #d8e2ea;
+  padding: 0 40px;
+}
+
+.chart-grid {
+  position: absolute;
+  inset: 0 0 38px 0;
+  background:
+    linear-gradient(to top, #e8eef4 1px, transparent 1px);
+  background-size: 100% 86px;
+  pointer-events: none;
+}
+
+.chart-bars {
+  height: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.chart-bar-item {
+  width: 110px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.bar-value {
   font-size: 18px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 8px;
 }
 
-.graph-track {
-  width: 100%;
-  height: 24px;
-  background: #edf2f7;
-  border-radius: 50px;
-  overflow: hidden;
+.bar {
+  width: 75px;
+  min-height: 8px;
+  height: 0;
+  border-radius: 14px 14px 0 0;
+  transition: height 1s ease;
+  position: relative;
 }
 
-.graph-bar {
-  height: 100%;
-  width: 0%;
-  border-radius: 50px;
-  transition: width 0.8s ease;
+.member-graph-bar {
+  background: linear-gradient(to top, #008ad0, #00c3ff);
+  box-shadow: 0 12px 28px rgba(0, 138, 208, 0.35);
 }
 
-.member-bar {
-  background: #008ad0;
+.donation-graph-bar {
+  background: linear-gradient(to top, #16a34a, #47d16c);
+  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.35);
 }
 
-.donation-bar {
-  background: #16a34a;
+.chart-bar-item p {
+  position: absolute;
+  bottom: -42px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #222;
+  white-space: nowrap;
 }
 
-.dashboard-action-section {
+.chart-bar-item p i {
+  color: #008ad0;
+  margin-right: 6px;
+}
+
+.quick-links {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.action-row {
+.quick-link-row {
   background: #fff;
-  border-radius: 14px;
+  border-radius: 18px;
   padding: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
   border-left: 5px solid #008ad0;
+  transition: 0.3s ease;
 }
 
-.action-row h3 {
+.quick-link-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(0, 138, 208, 0.14);
+}
+
+.quick-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quick-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #eef8fd;
+  color: #008ad0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.quick-link-row h3 {
   font-size: 20px;
   color: #111;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
-.action-row p {
+.quick-link-row p {
   font-size: 15px;
   color: #555;
-  line-height: 1.5;
 }
 
-.action-row button {
+.quick-btn {
   min-width: 220px;
-  height: 48px;
+  height: 50px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #008ad0;
   color: #fff;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
   cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.quick-btn:hover {
+  background: #006fa8;
+  transform: translateY(-2px);
+}
+
+.quick-btn i {
   transition: 0.3s;
 }
 
-.action-row button:hover {
-  background: #006fa8;
-  transform: translateY(-2px);
+.quick-btn:hover i {
+  transform: translateX(4px);
 }
 
 @media (max-width: 991px) {
@@ -208,12 +307,16 @@ body {
     font-size: 32px;
   }
 
-  .dashboard-card {
-    padding: 25px;
+  .dashboard-cards {
+    gap: 18px;
   }
 
-  .dashboard-card h2 {
-    font-size: 36px;
+  .dashboard-card {
+    padding: 26px;
+  }
+
+  .chart-bars {
+    gap: 45px;
   }
 }
 
@@ -226,18 +329,38 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .action-row {
+  .dashboard-graph-box {
+    padding: 24px;
+  }
+
+  .chart-wrapper {
+    height: 300px;
+  }
+
+  .chart-area {
+    padding: 0 20px;
+  }
+
+  .chart-bars {
+    gap: 32px;
+  }
+
+  .chart-bar-item {
+    width: 90px;
+  }
+
+  .bar {
+    width: 60px;
+  }
+
+  .quick-link-row {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .action-row button {
+  .quick-btn {
     width: 100%;
     min-width: 100%;
-  }
-
-  .dashboard-graph-box {
-    padding: 24px;
   }
 }
 
@@ -247,7 +370,7 @@ body {
   }
 
   .dashboard-header h1 {
-    font-size: 26px;
+    font-size: 27px;
   }
 
   .dashboard-header p {
@@ -255,28 +378,63 @@ body {
   }
 
   .dashboard-card {
-    padding: 20px;
+    padding: 22px;
+    min-height: 170px;
   }
 
-  .card-icon {
+  .dashboard-icon {
     width: 55px;
     height: 55px;
-    font-size: 23px;
-  }
-
-  .dashboard-card h3 {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .dashboard-card h2 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .graph-header h2 {
     font-size: 22px;
   }
 
-  .action-row h3 {
+  .chart-wrapper {
+    gap: 8px;
+    height: 280px;
+  }
+
+  .chart-y-axis {
+    width: 30px;
+    font-size: 11px;
+  }
+
+  .chart-area {
+    padding: 0 8px;
+  }
+
+  .chart-bars {
+    gap: 18px;
+  }
+
+  .chart-bar-item {
+    width: 75px;
+  }
+
+  .bar {
+    width: 48px;
+  }
+
+  .chart-bar-item p {
+    font-size: 12px;
+  }
+
+  .quick-info {
+    align-items: flex-start;
+  }
+
+  .quick-link-row h3 {
     font-size: 18px;
+  }
+
+  .quick-link-row p {
+    font-size: 14px;
   }
 }

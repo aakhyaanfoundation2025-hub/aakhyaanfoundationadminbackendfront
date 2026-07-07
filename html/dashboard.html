@@ -10,115 +10,108 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <script>
-        if (!localStorage.getItem("token")) {
-            window.location.href = "../index.html";
-        }
-    </script>
 
-    <div id="header"></div>
-  <section class="dashboard-section">
+<section class="dashboard-section">
 
-    <div class="dashboard-header">
-      <h1>View Dashboard</h1>
-      <p>Track total members, donation forms and compare overall public form submissions.</p>
+  <div class="dashboard-header">
+    <h1>View Dashboard</h1>
+    <p>Track total members, donation forms and compare all public form submissions in one place.</p>
+  </div>
+
+  <div class="dashboard-cards">
+
+    <div class="dashboard-card">
+      <div class="dashboard-icon">
+        <i class="fa-solid fa-users"></i>
+      </div>
+      <h3>Total Members</h3>
+      <h2 id="totalMembers">0</h2>
     </div>
 
-    <div class="dashboard-cards">
+    <div class="dashboard-card">
+      <div class="dashboard-icon">
+        <i class="fa-solid fa-hand-holding-heart"></i>
+      </div>
+      <h3>Total Donations</h3>
+      <h2 id="totalDonations">0</h2>
+    </div>
 
-      <div class="dashboard-card">
-        <div class="dashboard-icon">
+  </div>
+
+  <div class="dashboard-graph-box">
+    <div class="graph-header">
+      <h2>Members vs Donations Comparison</h2>
+      <p>Live 2D comparison graph based on database records.</p>
+    </div>
+
+    <div class="chart-wrapper">
+      <div class="chart-y-axis">
+        <span id="maxScale">0</span>
+        <span id="midScale">0</span>
+        <span>0</span>
+      </div>
+
+      <div class="chart-area">
+        <div class="chart-grid"></div>
+
+        <div class="chart-bars">
+          <div class="chart-bar-item">
+            <div class="bar-value" id="memberGraphValue">0</div>
+            <div class="bar member-graph-bar" id="memberGraphBar"></div>
+            <p><i class="fa-solid fa-users"></i> Members</p>
+          </div>
+
+          <div class="chart-bar-item">
+            <div class="bar-value" id="donationGraphValue">0</div>
+            <div class="bar donation-graph-bar" id="donationGraphBar"></div>
+            <p><i class="fa-solid fa-hand-holding-heart"></i> Donations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quick-links">
+
+    <div class="quick-link-row">
+      <div class="quick-info">
+        <div class="quick-icon">
           <i class="fa-solid fa-users"></i>
         </div>
-
-        <h3>Total Members</h3>
-        <h2 id="totalMembers">0</h2>
-      </div>
-
-      <div class="dashboard-card">
-        <div class="dashboard-icon">
-          <i class="fa-solid fa-hand-holding-heart"></i>
-        </div>
-
-        <h3>Total Donations</h3>
-        <h2 id="totalDonations">0</h2>
-      </div>
-
-    </div>
-
-    <div class="dashboard-graph-box">
-      <div class="graph-header">
-        <h2>Members vs Donations Comparison</h2>
-        <p>Dynamic comparison based on submitted form data.</p>
-      </div>
-
-      <div class="graph-area">
-
-        <div class="graph-row">
-          <div class="graph-label">
-            <i class="fa-solid fa-users"></i>
-            <span>Members</span>
-          </div>
-
-          <div class="graph-bar-wrapper">
-            <div class="graph-bar member-bar" id="memberBar">
-              <span id="memberBarValue">0</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="graph-row">
-          <div class="graph-label">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-            <span>Donations</span>
-          </div>
-
-          <div class="graph-bar-wrapper">
-            <div class="graph-bar donation-bar" id="donationBar">
-              <span id="donationBarValue">0</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="quick-links">
-
-      <div class="quick-link-row">
         <div>
           <h3>View all data of member</h3>
           <p>Open complete membership form submissions.</p>
         </div>
-
-        <button type="button" class="quick-btn" onclick="openAdminPage('memberdata.html')">
-          View Member Data
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
       </div>
 
+      <button type="button" class="quick-btn" onclick="openAdminPage('memberdata.html')">
+        View Member Data
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
     </div>
-    <div class="quick-links">
-      <div class="quick-link-row">
+
+    <div class="quick-link-row">
+      <div class="quick-info">
+        <div class="quick-icon">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+        </div>
         <div>
           <h3>View all data of donation</h3>
           <p>Open complete donation form submissions.</p>
         </div>
-
-        <button type="button" class="quick-btn" onclick="openAdminPage('donateformdata.html')">
-          View Donation Data
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
       </div>
 
+      <button type="button" class="quick-btn" onclick="openAdminPage('donateformdata.html')">
+        View Donation Data
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
     </div>
 
-  </section>
+  </div>
 
-  <script src="../config.js"></script>
-    <script src="../js/header.js"></script>
-    <script src="../js/login.js"></script>
-    <script src="../js/signup.js"></script>
-  <script src="../js/dashboard.js"></script>
+</section>
+
+<script src="../config.js"></script>
+<script src="../js/dashboard.js"></script>
 </body>
 </html>

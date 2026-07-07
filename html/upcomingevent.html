@@ -19,7 +19,13 @@
 
 <body>
 
+    <script>
+        if (!localStorage.getItem("token")) {
+            window.location.href = "../index.html";
+        }
+    </script>
 
+    <div id="header"></div>
 
     <section class="event-hero">
         <div class="event-overlay"></div>
